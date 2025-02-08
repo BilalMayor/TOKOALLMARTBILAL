@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Konfirmasi Pembelian</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f9fafb;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 500px;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 0.8s forwards ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            color: #007BFF;
+            font-size: 2rem;
+        }
+
+        .success-icon {
+            font-size: 50px;
+            color: #28a745;
+        }
+
+        .order-details {
+            text-align: left;
+            margin-top: 20px;
+            font-size: 16px;
+            color: #333;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 15px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background-color: #007BFF;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Pembelian Berhasil!</h1>
+        <p>Detail pesanan Anda:</p>
+    
+        <div class="order-details">
+            <strong>Alamat Pengiriman:</strong> <span id="alamatText"></span><br>
+            <strong>Nomor Telepon:</strong> <span id="nomorTeleponText"></span><br>
+            <strong>Jumlah Barang:</strong> <span id="jumlahText"></span><br>
+            <strong>Kategori Barang:</strong> <span id="kategoriText"></span><br>
+            <strong>Metode Pembayaran:</strong> <span id="pembayaranText"></span><br>
+            <strong>Gambar Produk:</strong><br>
+            <img id="produkImage" src="" alt="Produk" width="100" height="100" style="border-radius:10px; margin-top:10px;"><br>
+        </div>
+        
+    
+        <a href="Beli.html" class="btn btn-primary">Kembali</a>
+    </div>
+    
+    <script>
+        // Ambil parameter dari URL
+        const params = new URLSearchParams(window.location.search);
+    
+        // Menampilkan data yang dibawa dari halaman 1
+        document.getElementById('alamatText').textContent = params.get('alamat') || "-";
+        document.getElementById('nomorTeleponText').textContent = params.get('nomorTelepon') || "-";
+        document.getElementById('jumlahText').textContent = params.get('jumlah') || "-";
+        document.getElementById('kategoriText').textContent = params.get('kategori') || "-";
+        document.getElementById('pembayaranText').textContent = params.get('metodePembayaran') || "-";
+    
+        // Menampilkan gambar produk jika ada
+        const produkImage = params.get('produkImage');
+        if (produkImage) {
+            document.getElementById('produkImage').src = decodeURIComponent(produkImage);
+        } else {
+            document.getElementById('produkImage').style.display = "none"; // Sembunyikan jika tidak ada gambar
+        }
+    </script>
+    
+    
+    
+</body>
+</html>

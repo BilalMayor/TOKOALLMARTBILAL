@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>TokoBilal</title>
+    <style>
+        @keyframes gradientMove {
+            0% {
+                background-position: 100% 0%;
+            }
+            100% {
+                background-position: 0% 100%;
+            }
+        }
+        .navbar {
+            background: linear-gradient(45deg, #ff512f, #dd2476);
+            background-size: 300% 300%;
+            animation: gradientMove 5s linear infinite alternate;
+        }
+        .sidebar {
+            background: linear-gradient(45deg, #36d1dc, #5b86e5);
+            color: white;
+            height: 100vh;
+            width: 250px;
+            padding: 20px;
+            position: fixed;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <!-- Navbar -->
+    <header class="navbar shadow-md py-4 text-white text-center text-2xl font-bold">
+        TokoBilal - Produk Berkualitas & Terjangkau
+    </header>
+    
+    <!-- Layout Container -->
+    <div class="flex">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <nav class="space-y-4">
+                <a href="Cara Beli.html" class="block text-lg font-semibold hover:text-gray-200">📌 Cara Beli</a>
+                <a href="No WA.html" class="block text-lg font-semibold hover:text-gray-200">📞 Nomor WA</a>
+                <a href="Barang-barang.html" class="block text-lg font-semibold hover:text-gray-200">🛍 Produk</a>
+                <a href="Lokasi.html" class="block text-lg font-semibold hover:text-gray-200">📍 Reseller</a>
+                <a href="Tentang Kami.html" class="block text-lg font-semibold hover:text-gray-200">ℹ️ Tentang Kami</a>
+                <a href="Login.html" class="block mt-6 bg-yellow-400 text-center py-2 rounded-md text-black font-bold hover:bg-yellow-500 transition">🔐 Login</a>
+            </nav>
+        </aside>
+
+        <!-- Konten Produk -->
+        <main class="flex-1 p-10 ml-[250px]">
+            <h2 class="text-3xl font-bold text-gray-900 text-center mb-8">Produk Terbaru</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Produk 1 -->
+                <div class="bg-white p-6 rounded-lg shadow-lg border border-gray-200">
+                    <img src="https://i.pinimg.com/564x/0c/e4/b4/0ce4b446916f2e5f9e709e83bd45637a.jpg" class="w-full h-64 object-cover rounded-md">
+                    <h3 class="text-lg font-semibold mt-4">Monyet Saltink</h3>
+                    <p class="text-gray-600">Rp 2000 + Kandangnya</p>
+                    <a href="Beli.html" class="block mt-4 bg-yellow-500 py-2 text-center text-white font-bold rounded-md hover:bg-yellow-600">BELI</a>
+                </div>
+
+                <!-- Produk 2 -->
+                <div class="bg-white p-6 rounded-lg shadow-lg border border-gray-200">
+                    <img src="https://assets.pikiran-rakyat.com/crop/0x0:0x0/x/photo/2022/08/01/40912553.png" class="w-full h-64 object-cover rounded-md">
+                    <h3 class="text-lg font-semibold mt-4">Diamond EpEp</h3>
+                    <p class="text-gray-600">Rp100.000</p>
+                    <a href="Beli.html" class="block mt-4 bg-yellow-500 py-2 text-center text-white font-bold rounded-md hover:bg-yellow-600">BELI</a>
+                </div>
+
+                <!-- Produk 3 -->
+                <div class="bg-white p-6 rounded-lg shadow-lg border border-gray-200">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1ADDs8k5EccB5IahO6IB4ALfBcvP32UuvZjMfpq-jg44040hnWDyHjl7vkN_fP5lCBdE&usqp=CAU" class="w-full h-64 object-cover rounded-md">
+                    <h3 class="text-lg font-semibold mt-4">Pemotong Rumput S8000</h3>
+                    <p class="text-gray-600">Rp 999.999</p>
+                    <a href="Beli.html" class="block mt-4 bg-yellow-500 py-2 text-center text-white font-bold rounded-md hover:bg-yellow-600">BELI</a>
+                </div>
+
+                <!-- Produk 4 -->
+                <div class="bg-white p-6 rounded-lg shadow-lg border border-gray-200">
+                    <img src="https://i.pinimg.com/originals/85/da/c8/85dac8145c5bcd2dd480393a2303484b.png" class="w-full h-64 object-cover rounded-md">
+                    <h3 class="text-lg font-semibold mt-4">Kyubi</h3>
+                    <p class="text-gray-600">Rp 1.000.000.000.000</p>
+                    <a href="Beli.html" class="block mt-4 bg-yellow-500 py-2 text-center text-white font-bold rounded-md hover:bg-yellow-600">BELI</a>
+                </div>
+
+                <!-- Produk 5 -->
+                <div class="bg-white p-6 rounded-lg shadow-lg border border-gray-200">
+                    <img src="https://th.bing.com/th/id/OIP.gyjHqZL0f4GvxT02YlteUAHaEK?rs=1&pid=ImgDetMain" class="w-full h-64 object-cover rounded-md">
+                    <h3 class="text-lg font-semibold mt-4">Kodok Maut</h3>
+                    <p class="text-gray-600">Rp 500</p>
+                    <a href="Beli.html" class="block mt-4 bg-yellow-500 py-2 text-center text-white font-bold rounded-md hover:bg-yellow-600">BELI</a>
+                </div>
+
+                <!-- Produk 6 -->
+                <div class="bg-white p-6 rounded-lg shadow-lg border border-gray-200">
+                    <img src="https://i1.sndcdn.com/artworks-9pEkpyrvIeh1jtRn-h4dyBA-t500x500.jpg" class="w-full h-64 object-cover rounded-md">
+                    <h3 class="text-lg font-semibold mt-4">Petir ZEUS</h3>
+                    <p class="text-gray-600">Rp Seikhlasnya</p>
+                    <a href="Beli.html" class="block mt-4 bg-yellow-500 py-2 text-center text-white font-bold rounded-md hover:bg-yellow-600">BELI</a>
+                </div>
+
+            </div>
+        </main>
+
+    </div>
+
+</body>
+</html>

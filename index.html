@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Beranda</title>
+    <style>
+        /* Background RGB lebih kompleks */
+        .animated-bg {
+            background: linear-gradient(45deg, #ff0000, #00ff00, #0000ff, #ff00ff, #ffff00, #00ffff, #ff4500);
+            background-size: 400% 400%;
+            animation: backgroundMove 8s infinite alternate;
+        }
+        @keyframes backgroundMove {
+            0% { background-position: 0% 50%; }
+            25% { background-position: 50% 100%; }
+            50% { background-position: 100% 50%; }
+            75% { background-position: 50% 0%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Efek transisi halaman */
+        .page-transition {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,0,0,0.8) 10%, rgba(0,255,255,0.8) 50%, rgba(0,0,255,0.8) 90%);
+            clip-path: circle(0% at 50% 50%);
+            transition: clip-path 1.5s ease-in-out, opacity 1s;
+            opacity: 1;
+            z-index: 9999;
+        }
+        .page-transition.active {
+            clip-path: circle(150% at 50% 50%);
+            opacity: 0;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- Transisi Halaman -->
+    <div class="page-transition" id="pageTransition"></div>
+
+    <!-- Header -->
+    <header class="bg-blue-600 py-8 text-white text-center text-5xl font-semibold shadow-xl">
+        AllMart 😘😘😘
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex flex-col items-center justify-center min-h-screen px-6 md:px-12">
+        <section class="w-full max-w-screen-xl">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Text and Button Section -->
+                <div class="p-8 md:p-12 lg:px-16 lg:py-24 flex flex-col justify-center text-center md:text-left shadow-2xl rounded-xl animated-bg">
+                    <h2 class="text-5xl font-bold text-white md:text-6xl leading-tight">
+                        Selamat Datang di Toko kami 😍
+                    </h2>
+                    <p class="mt-6 text-lg text-white opacity-90">
+                        Kami Menyediakan Semua Kebutuhan Anda Dengan Layanan Terbaik.
+                    </p>
+                    <div class="mt-8">
+                        <button onclick="startTransition()" class="inline-block rounded-full border-2 border-white bg-white text-lg font-semibold text-blue-600 px-12 py-4 transition transform hover:bg-blue-600 hover:text-white focus:ring-4 focus:ring-yellow-400 focus:outline-none hover:scale-105">
+                            Masuk
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Images Section -->
+                <div class="flex flex-col gap-6">
+                    <div class="w-full h-80 bg-cover bg-center rounded-lg shadow-xl transform hover:scale-105 transition-transform duration-500" style="background-image: url('https://www.utopicomputers.com/wp-content/uploads/2019/05/Gambar-Toko-Online.png');"></div>
+                    <div class="relative w-full h-80 bg-cover bg-center rounded-lg shadow-xl transform hover:scale-105 transition-transform duration-500" style="background-image: url('images/FotoKu.jpg'); opacity: 0.7;">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <p class="text-black text-3xl font-bold" style="text-shadow: 2px 2px 6px rgba(255, 255, 255, 0.8);">Pemilik Web</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white text-center py-6 mt-16">
+        &copy; 2025 Perusahaan Anda. Semua Hak Dilindungi.
+    </footer>
+
+    <script>
+        function startTransition() {
+            const transitionElement = document.getElementById("pageTransition");
+            transitionElement.classList.add("active");
+            setTimeout(() => {
+                window.location.href = "Beranda.html";
+            }, 1500);
+        }
+    </script>
+</body>
+</html>

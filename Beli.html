@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Halaman Pembelian Barang</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f9fafb;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #007BFF;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+
+        .form-section {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        input[type="text"], input[type="number"], select {
+            width: 100%;
+            padding: 12px;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            background-color: #f9f9f9;
+        }
+
+        input[type="text"]:focus, input[type="number"]:focus, select:focus {
+            outline: none;
+            border-color: #007BFF;
+            background-color: #ffffff;
+        }
+
+        .submit-btn {
+            background-color: #007BFF;
+            color: white;
+            padding: 15px 0;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            font-size: 18px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .submit-btn:hover {
+            background-color: #0056b3;
+            transition: background-color 0.3s ease;
+        }
+
+        .error-message {
+            color: #ff3b3b;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        #produkInfo {
+            margin-top: 20px;
+            text-align: center;
+            display: none;
+        }
+
+        #produkInfo img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+
+        #produkHarga {
+            font-size: 18px;
+            color: #007BFF;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Halaman Pembelian Barang</h1>
+        
+        <form action="/submit-pembelian" method="POST" id="formPembelian">
+            
+            <div class="form-section">
+                <label for="alamat">Alamat Pengiriman</label>
+                <input type="text" id="alamat" name="alamat" required placeholder="Masukkan alamat pengiriman">
+                <div id="alamatError" class="error-message" style="display:none;">Alamat pengiriman harus diisi.</div>
+            </div>
+
+            <div class="form-section">
+                <label for="nomorTelepon">Nomor Telepon</label>
+                <input type="text" id="nomorTelepon" name="nomorTelepon" required placeholder="Masukkan nomor telepon" pattern="^\d{10,15}$" title="Nomor telepon harus antara 10 hingga 15 digit">
+                <div id="nomorTeleponError" class="error-message" style="display:none;">Nomor telepon harus diisi dengan benar.</div>
+            </div>
+
+            <div class="form-section">
+                <label for="jumlah">Jumlah Barang</label>
+                <input type="number" id="jumlah" name="jumlah" required placeholder="Masukkan jumlah barang" min="1">
+                <div id="jumlahError" class="error-message" style="display:none;">Jumlah barang harus lebih dari 0.</div>
+            </div>
+
+            <div class="form-section">
+                <label for="kategori">Pilih Kategori Barang</label>
+                <select id="kategori" name="kategori" required>
+                    <option value="">-</option>
+                    <option value="Monyet Saltink">Monyet Saltink</option>
+                    <option value="Diamond EpEp">Diamond EpEp</option>
+                    <option value="Pemotong Rumput S8000">Pemotong Rumput S8000</option>
+                    <option value="Kyubi">Kyubi</option>
+                    <option value="Kodok Maut">Kodok Maut</option>
+                    <option value="Petir ZEUS">Petir ZEUS</option>
+                </select>
+            </div>
+
+            <div class="form-section">
+                <label for="metodePembayaran">Pilih Metode Pembayaran</label>
+                <select id="metodePembayaran" name="metodePembayaran" required>
+                    <option value="transfer">Transfer Bank</option>
+                    <option value="cod">Bayar di Tempat (COD)</option>
+                    <option value="gopay">GoPay</option>
+                </select>
+            </div>
+
+            <button type="button" class="submit-btn" onclick="nextPage()">Konfirmasi Pembelian</button>
+
+<script>
+  function nextPage() {
+    document.getElementById("formPembelian").submit(); // Menggunakan form untuk redirect dengan data yang benar
+}
+</script>
+        </form>
+
+        <div id="produkInfo">
+            <img id="produkImage" src="" alt="Produk" />
+            <div id="produkHarga"></div>
+        </div>
+
+    </div>
+
+<script>
+    const produkData = {
+        "Monyet Saltink": { image: "https://i.pinimg.com/564x/0c/e4/b4/0ce4b446916f2e5f9e709e83bd45637a.jpg", harga: "Rp 2.000 + Kandanganya" },
+        "Diamond EpEp": { image: "https://assets.pikiran-rakyat.com/crop/0x0:0x0/x/photo/2022/08/01/40912553.png", harga: "Rp 100.000" },
+        "Pemotong Rumput S8000": { image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1ADDs8k5EccB5IahO6IB4ALfBcvP32UuvZjMfpq-jg44040hnWDyHjl7vkN_fP5lCBdE&usqp=CAU", harga: "Rp 999.999" },
+        "Kyubi": { image: "https://i.pinimg.com/originals/85/da/c8/85dac8145c5bcd2dd480393a2303484b.png", harga: "Rp 1.000.000.000.000" },
+        "Kodok Maut": { image: "https://th.bing.com/th/id/OIP.gyjHqZL0f4GvxT02YlteUAHaEK?rs=1&pid=ImgDetMain", harga: "Rp 500" },
+        "Petir ZEUS": { image: "https://i1.sndcdn.com/artworks-9pEkpyrvIeh1jtRn-h4dyBA-t500x500.jpg", harga: "Rp Seiklasnya" },
+    };
+
+    document.getElementById('kategori').addEventListener('change', function() {
+        const kategori = this.value;
+        const produkInfo = document.getElementById('produkInfo');
+        if (produkData[kategori]) {
+            document.getElementById('produkImage').src = produkData[kategori].image;
+            document.getElementById('produkHarga').textContent = produkData[kategori].harga;
+            produkInfo.style.display = 'block';
+        } else {
+            produkInfo.style.display = 'none';
+        }
+    });
+</script>
+<script>
+    function nextPage() {
+        // Ambil nilai dari input form
+        const alamat = document.getElementById("alamat").value.trim();
+        const nomorTelepon = document.getElementById("nomorTelepon").value.trim();
+        const jumlah = document.getElementById("jumlah").value.trim();
+        const kategori = document.getElementById("kategori").value;
+        const metodePembayaran = document.getElementById("metodePembayaran").value;
+
+        // Ambil gambar produk dari objek produkData
+        const produkImage = produkData[kategori] ? produkData[kategori].image : "";
+
+        // Validasi input
+        if (!alamat || !nomorTelepon || !jumlah || !kategori || !metodePembayaran) {
+            alert("Harap isi semua data dengan benar!");
+            return;
+        }
+
+        // Encode data agar URL tidak bermasalah
+        const queryString = new URLSearchParams({
+            alamat,
+            nomorTelepon,
+            jumlah,
+            kategori,
+            metodePembayaran,
+            produkImage
+        }).toString();
+
+        // Redirect ke halaman kedua dengan data yang benar
+        window.location.href = `Pembelian.html?${queryString}`;
+    }
+</script>
+
+
+<script>
+    // Ambil parameter dari URL
+    const params = new URLSearchParams(window.location.search);
+    document.getElementById('alamatText').textContent = params.get('alamat') || "-";
+    document.getElementById('nomorTeleponText').textContent = params.get('nomorTelepon') || "-";
+    document.getElementById('jumlahText').textContent = params.get('jumlah') || "-";
+    document.getElementById('kategoriText').textContent = params.get('kategori') || "-";
+    document.getElementById('pembayaranText').textContent = params.get('metodePembayaran') || "-";
+</script>
+
+
+</body>
+</html>
